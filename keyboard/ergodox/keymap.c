@@ -85,6 +85,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "keymap_micro.h"
 #elif defined(KEYMAP_CUB)
 #include "keymap_cub.h"
+#elif defined(KEYMAP_SMGT)
+#include "keymap_smgt.h"
 #else
 
 static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -207,6 +209,10 @@ void action_function(keyrecord_t *event, uint8_t id, uint8_t opt)
 #define KEYMAPS_SIZE    (sizeof(keymaps) / sizeof(keymaps[0]))
 #define FN_ACTIONS_SIZE (sizeof(fn_actions) / sizeof(fn_actions[0]))
 
+#if defined(KEYMAP_SMGT)
+
+#else
+
 /* translates key to keycode */
 uint8_t keymap_key_to_keycode(uint8_t layer, keypos_t key)
 {
@@ -217,6 +223,8 @@ uint8_t keymap_key_to_keycode(uint8_t layer, keypos_t key)
         return pgm_read_byte(&keymaps[0][(key.row)][(key.col)]);
     }
 }
+
+#endif
 
 #if defined(KEYMAP_CUB)
 
