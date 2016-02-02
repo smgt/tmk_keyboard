@@ -139,5 +139,3 @@ cub: all
 
 smgt: OPT_DEFS += -DKEYMAP_SMGT
 smgt: all
-
-
